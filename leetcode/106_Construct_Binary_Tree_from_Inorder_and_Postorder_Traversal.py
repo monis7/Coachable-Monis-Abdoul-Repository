@@ -12,7 +12,6 @@ class Solution:
         def helper(in_left: int, in_right: int) -> Optional[TreeNode]:
             if in_left > in_right:
                 return None
-
             # The current root value is the last element in postorder
             root_val = postorder.pop()
             root = TreeNode(root_val)
@@ -25,8 +24,6 @@ class Solution:
             root.left = helper(in_left, idx - 1)
 
             return root
-
         # Build a hashmap to store the index of each value in inorder traversal
         idx_map = {val: idx for idx, val in enumerate(inorder)}
-
         return helper(0, len(inorder) - 1)

@@ -22,6 +22,6 @@ class Solution:
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
-            result.append(level[::direction])
+            result.append(level[::-1] if direction == -1 else level)
             direction *= -1
         return result
