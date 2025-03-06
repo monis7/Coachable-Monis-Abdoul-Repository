@@ -2,7 +2,7 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
-        s = list(s)
+        invalid_indices = set()
         
         for i, char in enumerate(s):
             if char == '(':
@@ -11,9 +11,10 @@ class Solution:
                 if stack:
                     stack.pop()
                 else:
-                    s[i] = ''
+                    invalid_indices.add(i)
         
         while stack:
-            s[stack.pop()] = ''
+            invalid_indices.add(stack.pop())
         
-        return ''.join(s)
+        return ''.join([char for i, char in enumerate(s) if i not in invalid_indices])
+
