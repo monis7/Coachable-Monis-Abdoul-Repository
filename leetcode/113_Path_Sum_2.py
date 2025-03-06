@@ -14,7 +14,7 @@ class Solution:
                 return
             path.append(node.val)
             if not node.left and not node.right and remaining == node.val:
-                result.append(list(path))
+                result.append(path[:])
             else:
                 dfs(node.left, path, remaining - node.val)
                 dfs(node.right, path, remaining - node.val)
