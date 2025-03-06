@@ -9,7 +9,7 @@ class TreeNode:
 
 class Solution:
     def sufficientSubset(self, root: Optional[TreeNode], limit: int) -> Optional[TreeNode]:
-        def dfs(node, sum_):
+        def dfs(node, sum_=0):
             if not node:
                 return None
             sum_ += node.val
@@ -19,4 +19,6 @@ class Solution:
             node.right = dfs(node.right, sum_)
             return node if node.left or node.right else None
 
-        return dfs(root, 0)
+        return dfs(root)
+
+
